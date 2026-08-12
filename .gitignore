@@ -1,0 +1,7 @@
+# Datos en runtime (se generan solos al arrancar) — NO versionar la contraseña
+data/*.json
+data/*.tmp
+!data/config.example.json
+# Fotos subidas — NO versionar (RGPD / privacidad)
+uploads/*
+!uploads/.gitkeep
