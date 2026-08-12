@@ -1,0 +1,6 @@
+# La carpeta data contiene config.json con el hash de la contraseña: nunca servir por web.
+Require all denied
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
+</IfModule>
