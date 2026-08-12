@@ -28,7 +28,11 @@ function page_head(string $pageTitle): void
 <meta property="og:title" content="<?= e($config['title'] . ' · ' . $config['subtitle']) ?>">
 <meta property="og:description" content="Mira y comparte las fotos de las fiestas.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,<?= rawurlencode('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><ellipse cx="24" cy="36" rx="19" ry="5" fill="%230a3d5c"/><path d="M6 35C6 22 14 8 24 8s18 14 18 27" fill="%230e6ba8"/></svg>') ?>">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
