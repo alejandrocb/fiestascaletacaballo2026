@@ -28,7 +28,7 @@ jobs:
 
           # Carpeta de destino en el servidor. Cámbiala según tu hosting:
           #   muchos usan /public_html/ y otros / o /www/ o /htdocs/
-          server-dir: /public_html/
+          server-dir: /html/fiestascaletacaballo2026/
 
           # Carpeta de origen dentro del repo (la raíz).
           local-dir: ./
