@@ -1,0 +1,47 @@
+name: Desplegar a FTP
+
+# Se ejecuta en cada push a main y también se puede lanzar a mano desde
+# la pestaña "Actions" de GitHub (workflow_dispatch).
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Subir por FTP al hosting
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          # --- Datos de conexión (se guardan como "Secrets" en GitHub) ---
+          server:   ${{ secrets.FTP_SERVER }}      # ej.: ftp.tudominio.com
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+
+          # Protocolo: "ftps" (seguro, recomendado). Si tu hosting solo admite
+          # FTP a secas, cámbialo a "ftp". (Este action NO soporta SFTP.)
+          protocol: ftps
+
+          # Carpeta de destino en el servidor. Cámbiala según tu hosting:
+          #   muchos usan /public_html/ y otros / o /www/ o /htdocs/
+          server-dir: /public_html/
+
+          # Carpeta de origen dentro del repo (la raíz).
+          local-dir: ./
+
+          # --- MUY IMPORTANTE: no tocar los datos vivos del servidor ---
+          # Se excluyen del envío y del borrado para no pisar las fotos ya
+          # subidas ni la configuración (contraseña) creada en el servidor.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/node_modules/**
+            data/config.json
+            data/photos.json
+            uploads/**
+            README.md
